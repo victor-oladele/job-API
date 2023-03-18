@@ -13,7 +13,7 @@ const getalljobs = async(req , res)=>{
 const getjob = async(req , res)=>{
     const {user:{userid} , params:{id:jobid}} = req
     const job = await Job.findOne({_id:jobid , createdby:userid})
-    if(job){
+    if(!job){
         throw new notfounderror(`There is no job with this id ${jobid}`)
     }
     res.status(StatusCodes.OK).json({ job })
@@ -32,7 +32,7 @@ const deletejob = async(req , res)=>{
     if(job){
         throw new notfounderror(`There is no job with this id ${jobid}`)
     }
-    res.status(StatusCodes.OK).json({ job })
+    res.status(StatusCodes.OK).send()
 }
 
 const updatejob = async(req , res)=>{
