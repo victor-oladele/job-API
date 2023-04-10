@@ -1,0 +1,3 @@
+After createing a simple API of how JWT(json web token) works , i decided to build on it a JOB-API that allows users to register and login and only the authenticated registered and logged in users are only allowed to create , read , update and delete jobs.
+
+I also employ some security packeages like helmet(A nodejs modules that helps in securing http hearders) , xss-clean(it helps to sanitize user input) , cors:cross origin resource sharing helps to restrict external sources from having access to API resources , express-rate-limit is an express module that place limits on user request. and all errors was properly handled
