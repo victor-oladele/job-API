@@ -25,9 +25,14 @@ const jobroute = require('./routes/job')
 const authmiddleware = require('./middleware/authmiddleware')
 
 // extra security packages
+
+// helmet helps you secure your nodejs application by setting several http headers
 const helmet = require('helmet')
+// it is used to secure a certain web server from access from other website or domain
 const cors = require('cors')
+// middleware to sanitize user input
 const xss = require('xss-clean')
+// it is used to limit repeated request
 const ratelimiter = require('express-rate-limit')
 
 
@@ -36,6 +41,8 @@ app.use(ratelimiter({
     windowMs:15*60*1000, 
     max:100,
 }))
+
+
 app.use(express.json())
 app.use(helmet())
 app.use(cors())

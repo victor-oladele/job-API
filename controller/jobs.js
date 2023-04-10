@@ -29,7 +29,7 @@ const createjob = async(req , res)=>{
 const deletejob = async(req , res)=>{
     const {user:{userid} , params:{id:jobid}} = req
     const job = await Job.findByIdAndRemove({_id:jobid , createdby:userid})
-    if(job){
+    if(!job){
         throw new notfounderror(`There is no job with this id ${jobid}`)
     }
     res.status(StatusCodes.OK).send()

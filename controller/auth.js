@@ -24,6 +24,7 @@ const login = async(req , res) =>{
     const ispasswordmatch = await user.comparepassword(password)
     if(!ispasswordmatch){
         throw new authenticatederror('Invalid credentials')
+        
     }
     const token = user.createjwt()
     res.status(StatusCodes.OK).json({user:{name:user.name} , token})
